@@ -4,7 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "dev": "node --env-file=.env app.js"
+    "dev": "node --env-file=.env app.js",
+    "deploy": "node --env-file=.env config/deployCommands.js",
+    "delete": "node --env-file=.env config/deleteCommands.js"
   },
   "keywords": [],
   "author": "",
