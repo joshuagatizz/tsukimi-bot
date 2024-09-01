@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 	"os"
-	bot "tsukimi-web/bot"
+	"tsukimi-web/internal/bot"
 
 	"github.com/joho/godotenv"
 )
@@ -14,6 +14,8 @@ func main() {
 		log.Fatal("Error loading .env file")
 	}
 
-	bot.BotToken = os.Getenv("BOT_TOKEN")
-	bot.Run() // call the run function of bot/bot.go
+	botToken := os.Getenv("BOT_TOKEN")
+	bot := bot.NewBot(botToken)
+
+	bot.RemoveCommands()
 }
