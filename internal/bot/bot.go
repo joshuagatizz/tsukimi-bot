@@ -4,6 +4,7 @@ import (
 	"log"
 	"os"
 	"os/signal"
+	"strings"
 
 	"github.com/bwmarrin/discordgo"
 )
@@ -26,7 +27,19 @@ func NewBot(token string) *Bot {
 func (b *Bot) Run() {
 	// add the event handlers
 	b.session.AddHandler(func(s *discordgo.Session, i *discordgo.InteractionCreate) {
-		if h, ok := commandHandlers[i.ApplicationCommandData().Name]; ok {
+		commandName := ""
+		if i.Type == discordgo.InteractionApplicationCommand {
+			commandName = i.ApplicationCommandData().Name
+		} else {
+			// assumes that custom id is of shape "<commandname>-<something_else>"
+			customId := i.MessageComponentData().CustomID
+			split := strings.Split(customId, "-")
+
+			commandName = split[0]
+		}
+
+		log.Println(i.Type, commandName)
+		if h, ok := commandHandlers[commandName]; ok {
 			h(s, i)
 		}
 	})
