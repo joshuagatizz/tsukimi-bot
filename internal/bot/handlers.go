@@ -10,11 +10,6 @@ import (
 	"github.com/bwmarrin/discordgo"
 )
 
-const (
-	COMMAND_PING = "ping"
-	COMMAND_RPS  = "rps"
-)
-
 var commandHandlers = map[string]func(s *discordgo.Session, i *discordgo.InteractionCreate){
 	COMMAND_PING: func(s *discordgo.Session, i *discordgo.InteractionCreate) {
 		s.InteractionRespond(i.Interaction, &discordgo.InteractionResponse{

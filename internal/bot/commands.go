@@ -6,6 +6,11 @@ import (
 	"github.com/bwmarrin/discordgo"
 )
 
+const (
+	COMMAND_PING = "ping"
+	COMMAND_RPS  = "rps"
+)
+
 var commands = []*discordgo.ApplicationCommand{
 	{
 		Name:        COMMAND_PING,
