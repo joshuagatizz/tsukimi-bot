@@ -1,6 +1,6 @@
 module tsukimi-web
 
-go 1.23.0
+go 1.21.0
 
 require github.com/bwmarrin/discordgo v0.28.1
 
