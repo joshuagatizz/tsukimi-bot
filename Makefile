@@ -2,7 +2,7 @@ run:
 	go run cmd/app/main.go
 
 build:
-	go build -o bin/bot cmd/bot/main.go
+	go build -o bin/bot cmd/app/main.go
 
 regcmd:
 	go run cmd/register_commands/main.go
